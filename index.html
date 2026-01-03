@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$whitepaper - Bitcoin Whitepaper Coin</title>
+    <link rel="icon" type="image/png" href="Bitcoin-Logo.png">
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <style>
+        html {
+            /* scroll-behavior: smooth;  Removed to let Lenis handle it */
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #000000;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        img.banner {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #000000;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-shadow: none;
+        }
+
+        .ticker {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed #000000;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .ca-card {
+            border: 2px solid #000000;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            box-shadow: 5px 5px 0px #000000;
+            word-break: break-all;
+        }
+
+        .ca-label {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .ca-address {
+            font-size: 1.1rem;
+            user-select: all;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .copy-btn {
+            background-color: #000000;
+            color: #FFFFFF;
+            border: 1px solid #000000;
+            padding: 5px 15px;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        .history-section {
+            text-align: left;
+            margin-top: 40px;
+            border-top: 1px solid #000000;
+            padding-top: 20px;
+        }
+
+        .holders-section {
+            width: 100%;
+            margin-top: 40px;
+            border-top: 1px solid #000000;
+            padding-top: 20px;
+            text-align: left;
+        }
+
+        .holders-section h2 {
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .collapsible {
+            background-color: #f9f9f9;
+            color: #000000;
+            cursor: pointer;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .collapsible:hover {
+            background-color: #f0f0f0;
+        }
+
+        .collapsible:after {
+            content: '+'; 
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .active:after {
+            content: "+";
+            transform: rotate(45deg);
+        }
+
+        .content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid #000000;
+        }
+        
+        .content.show {
+            opacity: 1;
+            padding: 15px;
+        }
+        
+        .content p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .history-section h2 {
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Banner -->
+        <img src="wp_banner2.jpeg" alt="Bitcoin Whitepaper Banner" class="banner">
+
+        <!-- Title & Ticker -->
+        <h1>Bitcoin Whitepaper Coin</h1>
+        <div class="ticker">$whitepaper</div>
+
+        <!-- CA Card -->
+        <div class="ca-card">
+            <span class="ca-label">CONTRACT ADDRESS (CA)</span>
+            <div class="ca-address" id="ca-text">3k1cnfjX5fyVr4qLoDdG5oefWLFmZLGaz5nJ5X5Upump</div>
+            <button class="copy-btn" onclick="copyCA()">COPY ADDRESS</button>
+        </div>
+
+        <!-- Holders Section -->
+        <div class="holders-section">
+            <h2>Top Ten Celebrity Bitcoin Holders</h2>
+
+            <button class="collapsible">1. Elon Musk</button>
+            <div class="content">
+                <p>Co-founder of Tesla and SpaceX. Holds Bitcoin, and famously loves Dogecoin. Net worth: $436.8B.</p>
+            </div>
+
+            <button class="collapsible">2. Mark Cuban</button>
+            <div class="content">
+                <p>Shark Tank star and entrepreneur. Despite a love-hate relationship with crypto, he admits to holding Bitcoin. Net worth: $5.7B.</p>
+            </div>
+
+            <button class="collapsible">3. Serena Williams</button>
+            <div class="content">
+                <p>Tennis legend and owner of Serena Ventures. An active investor in Bitcoin. Net worth: $300M.</p>
+            </div>
+
+            <button class="collapsible">4. Paris Hilton</button>
+            <div class="content">
+                <p>Businesswoman and NFT enthusiast. One of the few celebrities to openly declare support for the crypto industry. Net worth: $300M.</p>
+            </div>
+
+            <button class="collapsible">5. Jack Dorsey</button>
+            <div class="content">
+                <p>Former Twitter CEO and leader of Block. A passionate Bitcoin advocate whose company invests heavily in BTC. Net worth: $5.3B.</p>
+            </div>
+
+            <button class="collapsible">6. Richard Branson</button>
+            <div class="content">
+                <p>Founder of Virgin Group. A silent supporter who participated in a $30M funding round for BitPay in 2014. Net worth: $2.5B.</p>
+            </div>
+
+            <button class="collapsible">7. Floyd Mayweather</button>
+            <div class="content">
+                <p>Renowned boxer and vocal crypto supporter. Holds Bitcoin and encourages investment in them. Net worth: $400M.</p>
+            </div>
+
+            <button class="collapsible">8. Kanye West</button>
+            <div class="content">
+                <p>Musician and entrepreneur. Views Bitcoiners as the "true liberation of America" and is believed to have huge BTC investments. Net worth: $400M.</p>
+            </div>
+
+            <button class="collapsible">9. Tom Brady</button>
+            <div class="content">
+                <p>NFL legend and co-founder of Autograph. Openly supports crypto and holds Bitcoin. Net worth: $300M.</p>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="history-section">
+            <h2>The Origin: Bitcoin Whitepaper</h2>
+            <p>
+                On October 31, 2008, a mysterious figure operating under the pseudonym <strong>Satoshi Nakamoto</strong> published a revolutionary paper titled <em>"Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. This document laid the foundation for the world's first decentralized cryptocurrency.
+            </p>
+            <p>
+                The whitepaper proposed a solution to the double-spending problem using a peer-to-peer network. It introduced the concept of a blockchain—a public ledger of all transactions—secured by Proof-of-Work.
+            </p>
+            <p>
+                <strong>January 03</strong> marks a historic milestone known as <strong>Bitcoin Day</strong> (Genesis Block Day). On this day in 2009, Satoshi Nakamoto mined the Genesis Block (Block 0), embedding the famous headline: <em>"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks."</em>
+            </p>
+            <p>
+                $whitepaper celebrates this history, the code, and the revolution that started with a simple PDF file.
+            </p>
+        </div>
+
+        <footer>
+            &copy; 2025 Bitcoin Whitepaper Coin. Decentralized & Immutable.
+        </footer>
+    </div>
+
+    <script>
+        function copyCA() {
+            const caText = document.getElementById('ca-text').innerText;
+            navigator.clipboard.writeText(caText).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.innerText;
+                btn.innerText = "COPIED!";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        // Initialize Lenis for smooth momentum scrolling
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    content.classList.remove("show");
+                } else {
+                    content.classList.add("show");
+                    content.style.maxHeight = content.scrollHeight + 30 + "px"; // +30 for padding
+                } 
+                
+                // Recalculate layout for Lenis after transition
+                setTimeout(() => {
+                    lenis.resize();
+                }, 450); 
+            });
+        }
+    </script>
+</body>
+</html>
